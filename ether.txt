@@ -1,0 +1,423 @@
+Welcome to OpenShift Advanced Application Deployment Bootcamp
+
+Dinner on Wednesday: https://goo.gl/maps/MuuGv7iDcF5jgzkd6
+Founding Farmers Tysons
+1800 Tysons Blvd, Tysons, VA 22102 (14 min walk from the office)
+Please put your names here if you are going: 
+    Pavel
+Thomas Peters-Hall
+Ryan Devlin
+Evan Carter
+Binoy Subhakumar
+Balazs Szeti
+Ritesh C
+
+Location: Tysons Corner, VA
+Instructor:   Pavel Anni (panni@redhat.com)
+Dates and Times:  4-8 November, 2019
+Monday: 13:00 - 17:00
+Tuesday through Thursday: 09:00 - 17:00
+Friday: 09:00 to 12:00
+Homework: There's homework to be done after the course, and it's required for course credit.  You'll find it on your learning site for this class.
+
+Class attendees (your full name, e-mail, animal):
+Pavel Anni "The Panda" panni@redhat.com - user99
+Neha Korrapati - "Narwhal -nkorapa@redhat.com user3
+Binoy- "bear"- bsubhaku@redhat.com - user10
+Aditya Modali "Antelope" amodali@redhat.com - user28
+Thomas Peters-Hall "Tiger" tpetersh@redhat.com - user4
+James "Bob" Jones - Bat - jamjones@redhat.com - user31
+Balazs Szeti - Bee - bszeti@redhat.com - user12
+Indrani Dey - Impala - idey@redhat.com - user40
+Michael (Mike) Olson - Mouse - miolson@redhat.com - user17
+Ritesh Chitalia - Raccoon - rchitali@redhat.com - user13
+Tom Hamill - Tapir - thamill@redhat.com - user98
+Tate DeVito "T-Rex" - tdevito@redhat.com - user11
+Joe Strickland - Jackal - jstrickl@redhat.com - user 1
+Jayson Shahan "Jaguar"-jshahan@redhat.com- user7
+Zacharius Campo "Zebratarius" - zcampo@redhat.com user88
+Pablo Castillo  - Polar Bear - pcastill@redhat.com user22
+Devlin Raptor - rdevlin@redhat.com - user42
+George Doykan "Giraffe" gdoykan@redhat.com user5
+Vedant Nevetia "Velociraptor" vnevetia@redhat.com user27
+Evan Carter - "Elephant"  - ecarter@redhat.com - user21
+Perry Minchew - "Platypus" - pminchew@redhat.com - user44
+
+Open TLC Link
+https://labs.opentlc.com/
+
+Course Materials:
+    https://learning.redhat.com/course/view.php?id=823
+
+OpenShift 4 Resources and Tools (new course!):
+    https://learning.redhat.com/enrol/index.php?id=1825
+OpenShift Operators:
+    https://learning.redhat.com/course/view.php?id=1436
+Red Hat Container Management and Image Building:
+    https://learning.redhat.com/course/view.php?id=1857 
+OpenShift 4 Foundations:
+    https://learning.redhat.com/course/view.php?id=1679
+OpenShift 4 Configuration:
+    https://learning.redhat.com/course/view.php?id=1798
+Red Hat OpenShift Container Platform 4: Break-Fix 1
+https://learning.redhat.com/course/view.php?id=1783 
+Red Hat OpenShift Container Platform 4: Break-Fix 2
+https://learning.redhat.com/course/view.php?id=1784
+Red Hat OpenShift Container Platform 4: Break-Fix 3
+https://learning.redhat.com/course/view.php?id=1785
+Red Hat OpenShift Container Platform 4: Break-Fix 4
+https://learning.redhat.com/course/view.php?id=1786
+Red Hat OpenShift Container Platform 4: Break-Fix 5
+https://learning.redhat.com/course/view.php?id=1787
+
+
+
+
+About this class
+a) Laptops closed during Slides and discussion
+
+b) Day-job work to be done outside the learning room of deep thought
+c) Extra credit for helping your co-learners
+
+Environment Setup
+Openshift API for command line 'oc' client: https://api.cluster-99b8.sandbox904.opentlc.com:6443
+Openshift Web Console: https://console-openshift-console.apps.cluster-99b8.sandbox904.opentlc.com
+OpenShift `oc` command: https://mirror.openshift.com/pub/openshift-v4/clients/oc/latest/
+UserIDs:      user{1..98}
+Password:  r3dh4t1!
+Be prepared for struggle, it's the best way to learn: https://medium.freecodecamp.org/why-you-learn-the-most-when-you-feel-like-youre-struggling-as-a-developer-7513327c8ee4
+
+OpenShift 4 Docs: https://docs.openshift.com/container-platform/4.2/welcome/index.html
+
+Cheat Sheets and Reference Cards (bash, git, oc, vim, Docker, Jenkins, etc.)
+https://github.com/redhat-gpte-devopsautomation/reference
+
+Red Hat Communities of Practice (CoP):    https://github.com/redhat-cop
+    for example, MongoDB StatefulSets: https://github.com/redhat-cop/containers-quickstarts/tree/master/mongodb
+    
+
+Day 1: 12 Factor Applications, Controllers 
+ 
+Slides:
+http://adv-dev-adv-dev.apps.dev311.openshift.opentlc.com/01_Course_Intro/AllSlides.html
+http://adv-dev-adv-dev.apps.dev311.openshift.opentlc.com/02_12_Factor_Applications/AllSlides.html
+http://adv-dev-adv-dev.apps.dev311.openshift.opentlc.com/03_Controllers/AllSlides.html
+Labs:
+http://adv-dev-adv-dev.apps.dev311.openshift.opentlc.com/03_Controllers/03_1_Controllers_Lab.html
+Lab Solution:
+http://adv-dev-adv-dev.apps.dev311.openshift.opentlc.com/03_Controllers/03_1_Controllers_Solution_Lab.html
+    
+    
+    TPH - This document helped me, its for 3.11, but works on 4.2:
+        https://docs.openshift.com/container-platform/3.11/architecture/networking/routes.html#alternateBackends
+        
+        This too: https://docs.openshift.com/container-platform/3.6/dev_guide/application_health.html#container-health-checks-using-probes
+        
+    And this: oc explain dc.spec.template.spec.containers.args
+
+Day 2: CI/CD Tools
+
+Slides:
+    http://adv-dev-adv-dev.apps.dev311.openshift.opentlc.com/04_CICD_Tools/AllSlides.html
+Labs:
+    http://adv-dev-adv-dev.apps.dev311.openshift.opentlc.com/04_CICD_Tools/04_1_CICD_Tools_Lab.html
+Lab Solution:
+    http://adv-dev-adv-dev.apps.dev311.openshift.opentlc.com/04_CICD_Tools/04_1_CICD_Tools_Solution_Lab.html
+
+for 5.1 nexus_settings.xml use this url in file http://nexus3-(yourGUIDHere)-nexus.apps.cluster-99b8.sandbox904.opentlc.com/ from nexus3 Route in web console
+
+for nexus_openshift_Settings.xml just change the GUID to yours and it should work.
+
+How to get local service name:
+    
+    # Get service info:
+    $ oc get svc/nexus3
+    NAME     TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)    AGE
+    nexus3   ClusterIP   172.30.17.117   <none>        8081/TCP   173m
+    # rsh to pod and run `getent hosts` on that CLUSTER-IP
+    $ oc rsh nexus3-1-29tfd getent hosts 172.30.17.117
+    172.30.17.117   nexus3.ab67-nexus.svc.cluster.local
+    
+    # to get into one command:
+    $ echo "getent hosts "$( oc get svc/nexus3 -o json | jq .spec.clusterIP )"; exit" | oc rsh nexus3-1-29tfd
+# to have it really in one line is like this:
+echo "getent hosts "$( oc get svc/nexus3 -o json | jq .spec.clusterIP )"; exit" | oc rsh $(oc get pods -o json | jq -r '.items[] | select(.status.phase=="Running") | .metadata.name ')
+
+Updated command to deploy Jenkins without OAUTH:
+    oc new-app jenkins-persistent --param MEMORY_LIMIT=2Gi --param DISABLE_ADMINISTRATIVE_MONITORS=true --param ENABLE_OAUTH=false --param=VOLUME_CAPACITY=5Gi
+    Credentials : admin / password
+
+SonarQube Image Source: https://github.com/wkulhanek/docker-openshift-sonarqube
+Gogs Image Source: https://github.com/wkulhanek/docker-openshift-gogs
+(Gitea Image Source): https://github.com/wkulhanek/docker-openshift-gitea
+
+FYI: The operator that assigns a ClusterResourceQuota to every user in the cluster: https://github.com/redhat-gpte-devopsautomation/userquota-operator
+    And an operator that deletes projects after a week (not active in our cluster): https://github.com/redhat-gpte-devopsautomation/project-cleanup-operator
+
+Blog Post on using Persistent Volumes in Jenkins Agent Pod:
+    https://blog.openshift.com/decrease-maven-build-times-openshift-pipelines-using-persistent-volume-claim/
+    One correction: Mount the volume in /home/jenkins/.m2/repository, NOT /home/jenkins/.m2 (otherwise you overwrite the stock settings.xml - we don't notice it because we always use a -s settings.xml from the repo anyway....)
+    Realize that in OCP4 we only have RWO volumes - so parallel builds won't work with a volume...
+
+vvvvv Extend a Jenkins agent image with skopeo vvvvv
+oc new-build --strategy=docker -D $'FROM quay.io/openshift/origin-jenkins-agent-maven:4.1.0\nUSER root\nRUN curl https://copr.fedorainfracloud.org/coprs/alsadi/dumb-init/repo/epel-7/alsadi-dumb-init-epel-7.repo -o /etc/yum.repos.d/alsadi-dumb-init-epel-7.repo && \ \n    curl https://raw.githubusercontent.com/cloudrouter/centos-repo/master/CentOS-Base.repo -o /etc/yum.repos.d/CentOS-Base.repo && \ \n    curl http://mirror.centos.org/centos-7/7/os/x86_64/RPM-GPG-KEY-CentOS-7 -o /etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7 && \ \n    DISABLES="--disablerepo=rhel-server-extras --disablerepo=rhel-server --disablerepo=rhel-fast-datapath --disablerepo=rhel-server-optional --disablerepo=rhel-server-ose --disablerepo=rhel-server-rhscl" && \ \n    yum $DISABLES -y --setopt=tsflags=nodocs install skopeo && yum clean all\nUSER 1001' --name=jenkins-agent-appdev
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+image-registry.openshift-image-registry.svc:5000/ciis-jenkins/jenkins-agent-appdev:latest
+
+oc get templates -n openshift | grep <search>
+oc get template <template-name> -n openshift -o yaml > template.yaml
+
+How to find something in OpenShift resources (e.g. emptyDir):
+    for r in $(oc api-resources | cut -f1 -d" ") ; do echo $r ; oc explain $r --recursive=true | grep emptyDir ; done
+
+Day 3: Building Applications & Operators
+
+Morning: Building Applications
+Afternoon: Operators
+
+Building Applications: 
+
+Slides:
+    http://adv-dev-adv-dev.apps.dev311.openshift.opentlc.com/05_Building_Applications/AllSlides.html
+Labs:
+    http://adv-dev-adv-dev.apps.dev311.openshift.opentlc.com/05_Building_Applications/05_1_Building_Applications_Lab.html
+Lab Solution:
+http://adv-dev-adv-dev.apps.dev311.openshift.opentlc.com/05_Building_Applications/05_1_Building_Applications_Solution_Lab.html
+
+for 2.1.4 use following command to find correct template: oc get templates -n openshift | grep eap
+
+then change it on the next step: oc new-app --template=eap(xx)-basic-s2i --param APPLICATION_NAME=tasks --param SOURCE_REPOSITORY_URL=http://gogs.${GUID}-gogs.svc.cluster.local:3000/CICDLabs/openshift-tasks-private.git --param SOURCE_REPOSITORY_REF=master --param CONTEXT_DIR=/ --param MAVEN_MIRROR_URL=http://nexus3.${GUID}-nexus.svc.cluster.local:8081/repository/maven-all-publictem Administrator–RHCSA v6.0 (EX200)
+
+
+Operators:
+This part of the Labs does not work on RHEL8CSB at the moment. docker is replaced by podman here, unfortunately version 1.0.2-dev. In the course of the labs you will have to execute 
+"docker build -f build/Dockerfile -t quay.io/afurbach/gogs-operator:v0.0.1 ." (docker as alias to podman) which then ends up in a fatal error "concurrent map writes when running podman container runlabel",
+see https://github.com/containers/libpod/issues/2420. Might be solved in podman 1.1 as noted in the comments in the link. I'd advise to tell attendants before taking this course to better use a VM instead of the curent RHEL8CSB until this is fixed.
+
+Slides:
+    http://adv-dev-adv-dev.apps.dev311.openshift.opentlc.com/06_Operators/AllSlides.html
+Labs:
+    http://adv-dev-adv-dev.apps.dev311.openshift.opentlc.com/06_Operators/06_1_Operators_Lab.html
+Lab Solution:
+    http://adv-dev-adv-dev.apps.dev311.openshift.opentlc.com/06_Operators/06_1_Operators_Solution_Lab.html
+
+Introduction To Red Hat OpenShift Container Platform Operators:
+    https://learning.redhat.com/enrol/index.php?id=1436
+    
+
+
+Operator Examples (not all work on OpenShift!!):
+    https://github.com/operator-framework/awesome-operators
+
+Community-created Operators 
+https://commons.openshift.org/sig/operators.html
+
+The Essentials of Ansible Operator: https://gist.github.com/djzager/bf6b5f8f64dc2866ec3a7725fc78e554
+
+Official Operator Docs in OCP 4.1 Documentation (not bad!)
+https://docs.openshift.com/container-platform/4.1/applications/operators/olm-what-operators-are.html
+
+https://Operatorhub.io
+
+Contents of deploy/role.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  creationTimestamp: null
+  name: gogs-operator
+rules:
+- apiGroups:
+  - ""
+  resources:
+  - pods
+  - services
+  - endpoints
+  - persistentvolumeclaims
+  - configmaps
+  - secrets
+  verbs:
+  - create
+  - update
+  - delete
+  - get
+  - list
+  - watch
+  - patch
+- apiGroups:
+  - apps
+  resources:
+  - deployments
+  - daemonsets
+  - replicasets
+  - statefulsets
+  verbs:
+  - create
+  - update
+  - delete
+  - get
+  - list
+  - watch
+  - patch
+- apiGroups:
+  - apps
+  resourceNames:
+  - gogs-operator
+  resources:
+  - deployments/finalizers
+  verbs:
+  - update
+- apiGroups:
+  - gpte.opentlc.com
+  resources:
+  - gogs
+  - gogs/status
+  verbs:
+  - create
+  - update
+  - delete
+  - get
+  - list
+  - watch
+  - patch
+- apiGroups:
+  - route.openshift.io
+  resources:
+  - routes
+  verbs:
+  - create
+  - update
+  - delete
+  - get
+  - list
+  - watch
+  - patch
+
+
+
+Day 4: Pipelines (putting it all together)
+
+Slides:
+    http://adv-dev-adv-dev.apps.dev311.openshift.opentlc.com/07_Pipelines/AllSlides.html
+Labs:
+    http://adv-dev-adv-dev.apps.dev311.openshift.opentlc.com/07_Pipelines/07_1_Pipelines_Lab.html
+Lab Solution:
+    http://adv-dev-adv-dev.apps.dev311.openshift.opentlc.com/07_Pipelines/07_1_Pipelines_Solution_Lab.html
+
+White Paper on CICD with OCP and Jenkins (with the tagging strategy we use)
+    https://access.redhat.com/documentation/en-us/reference_architectures/2017/html/application_cicd_on_openshift_container_platform_with_jenkins/
+
+
+Jenkins in a Nutshell: https://dzone.com/articles/jenkins-in-a-nutshell
+Jenkins using PVC: https://blog.openshift.com/decrease-maven-build-times-openshift-pipelines-using-persistent-volume-claim/ (mount at .m2/repository, NOT .m2)
+Jenkins Day 2: https://access.redhat.com/articles/3714291
+
+Jenkins Pipeline examples: https://github.com/jenkinsci/pipeline-examples
+
+OpenShift integration with external Jenkins:
+    http://uncontained.io/articles/external-jenkins-integration/
+    
+OpenShift Plugin for Jenkins:
+    https://github.com/openshift/jenkins-client-plugin
+    https://jenkins.io/doc/pipeline/steps/openshift-pipeline/
+    
+Running Jenkins Builds in Containers:
+    https://itnext.io/running-jenkins-builds-in-containers-458e90ff2a7b
+
+Trick to make starting pipelines faster (don't look for already running agent pods - there are never any anyway):
+oc set env dc/jenkins JENKINS_JAVA_OVERRIDES="-Dhudson.slaves.NodeProvisioner.initialDelay=0 -Dhudson.slaves.NodeProvisioner.MARGIN=50 -Dhudson.slaves.NodeProvisioner.MARGIN0=0.85 -Dorg.jenkinsci.plugins.durabletask.BourneShellScript.HEARTBEAT_CHECK_INTERVAL=300"
+
+Sonarqube Analysis Parameters
+https://docs.sonarqube.org/latest/analysis/analysis-parameters/
+
+
+Day 5: Homework, Survey, Finish the Labs! :-)
+
+PLEASE complete the Class Survey that you should have received Thursday afternoon/evening before you leave!!!
+
+NEW OpenShift 4 based Homework assignment:
+
+
+Finish whatever is left of your labs.
+Start the Homework.
+
+Script to export all projects to files
+
+Correction- <Sushil Tripathi > projects=$(oc get projects -o=jsonpath='{range .items[*]}{.metadata.name}{"\t"}')
+projects=$(oc get projects --output=jsonpath={.items.metadata.name})
+for project in $projects; do
+  echo "exporting project $project"
+  oc get --export -o yaml all -n $project > $project.yaml
+done
+
+
+
+Further Reading
+
+Book (Free): DevOps with OpenShift
+Close to the course material: https://www.openshift.com/promotions/devops-with-openshift.html
+
+Book (Free): Cloud Native DevOps with Kubernetes
+https://www.nginx.com/resources/library/cloud-native-devops-with-kubernetes/
+
+Book (Now free): Kubernetes Patterns
+https://www.redhat.com/en/engage/kubernetes-containers-architecture-s-201910240918 
+
+Book (Free so far): Kubernetes Up and Running (2 edition)
+https://azure.microsoft.com/en-us/resources/kubernetes-up-and-running/
+
+Book (free): Managing Kubernetes
+https://go.heptio.com/rs/383-ENX-437/images/Managing_Kubernetes.pdf
+
+Site Reliability Engineering (Google books, read online)
+https://landing.google.com/sre/books/
+
+Thinking in Kubernetes: very good article with explanation of K8s concepts and how they are different from traditional IT
+https://medium.com/better-programming/thinking-in-kubernetes-k8s-3770bf14c463
+
+12 Factor App Resources (Many of these principles apply outside of the world of MicroServices)
+Original Site: https://12factor.net/
+"In Plain English": http://www.clearlytech.com/2014/01/04/12-factor-apps-plain-english/
+Also gives an opinion of the value of each fact
+Video (many of these, IMO one of the better discussions:) https://www.youtube.com/watch?v=bLc3eKbyFNg
+Book (FREE): Beyond the 12 Factor App: http://www.oreilly.com/webops-perf/free/beyond-the-twelve-factor-app.cspbops-perf/free/beyond-the-twelve-factor-app.csp
+Blog post: https://blog.openshift.com/optimizing-twelve-12-factor-app-for-red-hat-openshift/
+Fallacies of Distributed Computing https://en.wikipedia.org/wiki/Fallacies_of_distributed_computing
+
+CAP Theorem:
+    Wikipedia: https://en.wikipedia.org/wiki/CAP_theorem
+    https://towardsdatascience.com/cap-theorem-and-distributed-database-management-systems-5c2be977950e
+    In plain English: http://ksat.me/a-plain-english-introduction-to-cap-theorem/
+    
+
+Principles of container-based application design (Red Hat Whitepaper):
+    https://www.redhat.com/en/engage/principles-of-container-based-application-design-20180501#form
+
+Microservices:
+    Martin Fowler: https://martinfowler.com/articles/microservices.html
+    Principles of Container-based application design: https://www.redhat.com/en/engage/principles-of-container-based-application-design-20180501
+
+OpenShift Community of Practice Material
+http://uncontained.io
+
+Whiteboarding of this class:
+    https://photos.app.goo.gl/LqqRZcE2ZxSqEZ9m8
+
+  
+Good Git tutorial:
+    https://dev.to/unseenwizzard/learn-git-concepts-not-commands-4gjc
+    
+Learn Go: Top 30 Go Tutorials for Programmers Of All Levels:
+    https://stackify.com/learn-go-tutorials/
+    Udemy is running a special for $9.99 until the 28th on the Go course
+
+
+
+
+
+
+
+
+
+
+

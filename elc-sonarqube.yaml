@@ -1,0 +1,1406 @@
+apiVersion: v1
+items:
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    annotations:
+      k8s.v1.cni.cncf.io/networks-status: ""
+      openshift.io/deployment-config.name: postgresql
+      openshift.io/deployment.name: postgresql-1
+      openshift.io/scc: restricted
+    creationTimestamp: "2019-11-05T18:26:38Z"
+    labels:
+      openshift.io/deployer-pod-for.name: postgresql-1
+    name: postgresql-1-deploy
+    namespace: elc-sonarqube
+    ownerReferences:
+    - apiVersion: v1
+      kind: ReplicationController
+      name: postgresql-1
+      uid: ce016209-fff9-11e9-a69d-020a49d26ab8
+    resourceVersion: "494308"
+    selfLink: /api/v1/namespaces/elc-sonarqube/pods/postgresql-1-deploy
+    uid: ce102357-fff9-11e9-a69d-020a49d26ab8
+  spec:
+    activeDeadlineSeconds: 21600
+    containers:
+    - env:
+      - name: OPENSHIFT_DEPLOYMENT_NAME
+        value: postgresql-1
+      - name: OPENSHIFT_DEPLOYMENT_NAMESPACE
+        value: elc-sonarqube
+      image: quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:2b363dce39d2e0f8b4a472ee09eb0058b9331d1ab04cd626c7d3fd4e670fe9dd
+      imagePullPolicy: IfNotPresent
+      name: deployment
+      resources: {}
+      securityContext:
+        capabilities:
+          drop:
+          - KILL
+          - MKNOD
+          - SETGID
+          - SETUID
+        runAsUser: 1001900000
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: deployer-token-hcttf
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    imagePullSecrets:
+    - name: deployer-dockercfg-p8d4n
+    nodeName: ip-10-0-155-144.us-east-2.compute.internal
+    priority: 0
+    restartPolicy: Never
+    schedulerName: default-scheduler
+    securityContext:
+      fsGroup: 1001900000
+      seLinuxOptions:
+        level: s0:c44,c4
+    serviceAccount: deployer
+    serviceAccountName: deployer
+    shareProcessNamespace: false
+    terminationGracePeriodSeconds: 10
+    tolerations:
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 300
+    volumes:
+    - name: deployer-token-hcttf
+      secret:
+        defaultMode: 420
+        secretName: deployer-token-hcttf
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2019-11-05T18:26:38Z"
+      reason: PodCompleted
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2019-11-05T18:27:13Z"
+      reason: PodCompleted
+      status: "False"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2019-11-05T18:27:13Z"
+      reason: PodCompleted
+      status: "False"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2019-11-05T18:26:38Z"
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: cri-o://e310a22acabd7340ddc529f9453ad09b608c93ff6d1b4a637f2aa52f821d1a07
+      image: quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:2b363dce39d2e0f8b4a472ee09eb0058b9331d1ab04cd626c7d3fd4e670fe9dd
+      imageID: quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:2b363dce39d2e0f8b4a472ee09eb0058b9331d1ab04cd626c7d3fd4e670fe9dd
+      lastState: {}
+      name: deployment
+      ready: false
+      restartCount: 0
+      state:
+        terminated:
+          containerID: cri-o://e310a22acabd7340ddc529f9453ad09b608c93ff6d1b4a637f2aa52f821d1a07
+          exitCode: 0
+          finishedAt: "2019-11-05T18:27:12Z"
+          reason: Completed
+          startedAt: "2019-11-05T18:26:46Z"
+    hostIP: 10.0.155.144
+    phase: Succeeded
+    podIP: 10.128.3.114
+    qosClass: BestEffort
+    startTime: "2019-11-05T18:26:38Z"
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    annotations:
+      k8s.v1.cni.cncf.io/networks-status: |-
+        [{
+            "name": "openshift-sdn",
+            "interface": "eth0",
+            "ips": [
+                "10.131.1.59"
+            ],
+            "default": true,
+            "dns": {}
+        }]
+      openshift.io/deployment-config.latest-version: "1"
+      openshift.io/deployment-config.name: postgresql
+      openshift.io/deployment.name: postgresql-1
+      openshift.io/generated-by: OpenShiftNewApp
+      openshift.io/scc: restricted
+    creationTimestamp: "2019-11-05T18:26:46Z"
+    generateName: postgresql-1-
+    labels:
+      app: sonarqube_db
+      deployment: postgresql-1
+      deploymentconfig: postgresql
+      name: postgresql
+    name: postgresql-1-rf2v5
+    namespace: elc-sonarqube
+    ownerReferences:
+    - apiVersion: v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: ReplicationController
+      name: postgresql-1
+      uid: ce016209-fff9-11e9-a69d-020a49d26ab8
+    resourceVersion: "494300"
+    selfLink: /api/v1/namespaces/elc-sonarqube/pods/postgresql-1-rf2v5
+    uid: d310301f-fff9-11e9-94f9-06a504ac82cc
+  spec:
+    containers:
+    - env:
+      - name: POSTGRESQL_USER
+        valueFrom:
+          secretKeyRef:
+            key: database-user
+            name: postgresql
+      - name: POSTGRESQL_PASSWORD
+        valueFrom:
+          secretKeyRef:
+            key: database-password
+            name: postgresql
+      - name: POSTGRESQL_DATABASE
+        valueFrom:
+          secretKeyRef:
+            key: database-name
+            name: postgresql
+      image: image-registry.openshift-image-registry.svc:5000/openshift/postgresql@sha256:a32b6e4cde1c76b97981373b408ee2e51b6be7f037db71b558bcf5469fb5bdd0
+      imagePullPolicy: IfNotPresent
+      livenessProbe:
+        exec:
+          command:
+          - /usr/libexec/check-container
+          - --live
+        failureThreshold: 3
+        initialDelaySeconds: 120
+        periodSeconds: 10
+        successThreshold: 1
+        timeoutSeconds: 10
+      name: postgresql
+      ports:
+      - containerPort: 5432
+        protocol: TCP
+      readinessProbe:
+        exec:
+          command:
+          - /usr/libexec/check-container
+        failureThreshold: 3
+        initialDelaySeconds: 5
+        periodSeconds: 10
+        successThreshold: 1
+        timeoutSeconds: 1
+      resources:
+        limits:
+          memory: 512Mi
+        requests:
+          memory: 512Mi
+      securityContext:
+        capabilities:
+          drop:
+          - KILL
+          - MKNOD
+          - SETGID
+          - SETUID
+        privileged: false
+        procMount: Default
+        runAsUser: 1001900000
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /var/lib/pgsql/data
+        name: postgresql-data
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: default-token-4c6ht
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    imagePullSecrets:
+    - name: default-dockercfg-gvdvx
+    nodeName: ip-10-0-133-78.us-east-2.compute.internal
+    priority: 0
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext:
+      fsGroup: 1001900000
+      seLinuxOptions:
+        level: s0:c44,c4
+    serviceAccount: default
+    serviceAccountName: default
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoSchedule
+      key: node.kubernetes.io/memory-pressure
+      operator: Exists
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 300
+    volumes:
+    - name: postgresql-data
+      persistentVolumeClaim:
+        claimName: postgresql
+    - name: default-token-4c6ht
+      secret:
+        defaultMode: 420
+        secretName: default-token-4c6ht
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2019-11-05T18:26:47Z"
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2019-11-05T18:27:12Z"
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2019-11-05T18:27:12Z"
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2019-11-05T18:26:47Z"
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: cri-o://a5bde28ddde066e6969344476cd4e5a9173aabbefdee11ff2393dadf44568e88
+      image: image-registry.openshift-image-registry.svc:5000/openshift/postgresql@sha256:a32b6e4cde1c76b97981373b408ee2e51b6be7f037db71b558bcf5469fb5bdd0
+      imageID: image-registry.openshift-image-registry.svc:5000/openshift/postgresql@sha256:a32b6e4cde1c76b97981373b408ee2e51b6be7f037db71b558bcf5469fb5bdd0
+      lastState: {}
+      name: postgresql
+      ready: true
+      restartCount: 0
+      state:
+        running:
+          startedAt: "2019-11-05T18:27:05Z"
+    hostIP: 10.0.133.78
+    phase: Running
+    podIP: 10.131.1.59
+    qosClass: Burstable
+    startTime: "2019-11-05T18:26:47Z"
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    annotations:
+      k8s.v1.cni.cncf.io/networks-status: ""
+      openshift.io/deployment-config.name: sonarqube
+      openshift.io/deployment.name: sonarqube-1
+      openshift.io/scc: restricted
+    creationTimestamp: "2019-11-05T18:28:30Z"
+    labels:
+      openshift.io/deployer-pod-for.name: sonarqube-1
+    name: sonarqube-1-deploy
+    namespace: elc-sonarqube
+    ownerReferences:
+    - apiVersion: v1
+      kind: ReplicationController
+      name: sonarqube-1
+      uid: 10ec02fa-fffa-11e9-a69d-020a49d26ab8
+    resourceVersion: "494939"
+    selfLink: /api/v1/namespaces/elc-sonarqube/pods/sonarqube-1-deploy
+    uid: 10f8e776-fffa-11e9-a69d-020a49d26ab8
+  spec:
+    activeDeadlineSeconds: 21600
+    containers:
+    - env:
+      - name: OPENSHIFT_DEPLOYMENT_NAME
+        value: sonarqube-1
+      - name: OPENSHIFT_DEPLOYMENT_NAMESPACE
+        value: elc-sonarqube
+      image: quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:2b363dce39d2e0f8b4a472ee09eb0058b9331d1ab04cd626c7d3fd4e670fe9dd
+      imagePullPolicy: IfNotPresent
+      name: deployment
+      resources: {}
+      securityContext:
+        capabilities:
+          drop:
+          - KILL
+          - MKNOD
+          - SETGID
+          - SETUID
+        runAsUser: 1001900000
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: deployer-token-hcttf
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    imagePullSecrets:
+    - name: deployer-dockercfg-p8d4n
+    nodeName: ip-10-0-155-144.us-east-2.compute.internal
+    priority: 0
+    restartPolicy: Never
+    schedulerName: default-scheduler
+    securityContext:
+      fsGroup: 1001900000
+      seLinuxOptions:
+        level: s0:c44,c4
+    serviceAccount: deployer
+    serviceAccountName: deployer
+    shareProcessNamespace: false
+    terminationGracePeriodSeconds: 10
+    tolerations:
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 300
+    volumes:
+    - name: deployer-token-hcttf
+      secret:
+        defaultMode: 420
+        secretName: deployer-token-hcttf
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2019-11-05T18:28:30Z"
+      reason: PodCompleted
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2019-11-05T18:28:47Z"
+      reason: PodCompleted
+      status: "False"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2019-11-05T18:28:47Z"
+      reason: PodCompleted
+      status: "False"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2019-11-05T18:28:30Z"
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: cri-o://ca6b123beaa2bc508ce78ab3549daf1be795db7c9a90c32eded57d132e056219
+      image: quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:2b363dce39d2e0f8b4a472ee09eb0058b9331d1ab04cd626c7d3fd4e670fe9dd
+      imageID: quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:2b363dce39d2e0f8b4a472ee09eb0058b9331d1ab04cd626c7d3fd4e670fe9dd
+      lastState: {}
+      name: deployment
+      ready: false
+      restartCount: 0
+      state:
+        terminated:
+          containerID: cri-o://ca6b123beaa2bc508ce78ab3549daf1be795db7c9a90c32eded57d132e056219
+          exitCode: 0
+          finishedAt: "2019-11-05T18:28:47Z"
+          reason: Completed
+          startedAt: "2019-11-05T18:28:38Z"
+    hostIP: 10.0.155.144
+    phase: Succeeded
+    podIP: 10.128.3.118
+    qosClass: BestEffort
+    startTime: "2019-11-05T18:28:30Z"
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    annotations:
+      k8s.v1.cni.cncf.io/networks-status: |-
+        [{
+            "name": "openshift-sdn",
+            "interface": "eth0",
+            "ips": [
+                "10.131.1.77"
+            ],
+            "default": true,
+            "dns": {}
+        }]
+      openshift.io/deployment-config.latest-version: "2"
+      openshift.io/deployment-config.name: sonarqube
+      openshift.io/deployment.name: sonarqube-2
+      openshift.io/generated-by: OpenShiftNewApp
+      openshift.io/scc: restricted
+    creationTimestamp: "2019-11-05T18:35:06Z"
+    generateName: sonarqube-2-
+    labels:
+      app: sonarqube
+      deployment: sonarqube-2
+      deploymentconfig: sonarqube
+    name: sonarqube-2-b6q5g
+    namespace: elc-sonarqube
+    ownerReferences:
+    - apiVersion: v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: ReplicationController
+      name: sonarqube-2
+      uid: f0ba8567-fffa-11e9-a69d-020a49d26ab8
+    resourceVersion: "498338"
+    selfLink: /api/v1/namespaces/elc-sonarqube/pods/sonarqube-2-b6q5g
+    uid: fd2ae7e6-fffa-11e9-94f9-06a504ac82cc
+  spec:
+    containers:
+    - env:
+      - name: SONARQUBE_JDBC_PASSWORD
+        value: sonar
+      - name: SONARQUBE_JDBC_URL
+        value: jdbc:postgresql://postgresql/sonar
+      - name: SONARQUBE_JDBC_USERNAME
+        value: sonar
+      image: wkulhanek/sonarqube@sha256:b560ad6d9270ea9b67cdd4f00523614436405341f9118e107ea098d03776dbb4
+      imagePullPolicy: IfNotPresent
+      livenessProbe:
+        exec:
+          command:
+          - echo
+          - ok
+        failureThreshold: 3
+        initialDelaySeconds: 40
+        periodSeconds: 10
+        successThreshold: 1
+        timeoutSeconds: 1
+      name: sonarqube
+      ports:
+      - containerPort: 9000
+        protocol: TCP
+      readinessProbe:
+        failureThreshold: 3
+        httpGet:
+          path: /about
+          port: 9000
+          scheme: HTTP
+        initialDelaySeconds: 20
+        periodSeconds: 10
+        successThreshold: 1
+        timeoutSeconds: 1
+      resources:
+        limits:
+          cpu: "2"
+          memory: 3Gi
+        requests:
+          cpu: "1"
+          memory: 2Gi
+      securityContext:
+        capabilities:
+          drop:
+          - KILL
+          - MKNOD
+          - SETGID
+          - SETUID
+        runAsUser: 1001900000
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /opt/sonarqube/data
+        name: sonarqube-volume-1
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: default-token-4c6ht
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    imagePullSecrets:
+    - name: default-dockercfg-gvdvx
+    nodeName: ip-10-0-133-78.us-east-2.compute.internal
+    priority: 0
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext:
+      fsGroup: 1001900000
+      seLinuxOptions:
+        level: s0:c44,c4
+    serviceAccount: default
+    serviceAccountName: default
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoSchedule
+      key: node.kubernetes.io/memory-pressure
+      operator: Exists
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 300
+    volumes:
+    - name: sonarqube-volume-1
+      persistentVolumeClaim:
+        claimName: sonarqube-pvc
+    - name: default-token-4c6ht
+      secret:
+        defaultMode: 420
+        secretName: default-token-4c6ht
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2019-11-05T18:35:07Z"
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2019-11-05T18:35:48Z"
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2019-11-05T18:35:48Z"
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2019-11-05T18:35:07Z"
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: cri-o://f8ac97ea3426ae773d373abafff8ea6701c1fc280e59b8ea84e7f05f44a1ec65
+      image: docker.io/wkulhanek/sonarqube@sha256:b560ad6d9270ea9b67cdd4f00523614436405341f9118e107ea098d03776dbb4
+      imageID: docker.io/wkulhanek/sonarqube@sha256:b560ad6d9270ea9b67cdd4f00523614436405341f9118e107ea098d03776dbb4
+      lastState: {}
+      name: sonarqube
+      ready: true
+      restartCount: 0
+      state:
+        running:
+          startedAt: "2019-11-05T18:35:27Z"
+    hostIP: 10.0.133.78
+    phase: Running
+    podIP: 10.131.1.77
+    qosClass: Burstable
+    startTime: "2019-11-05T18:35:07Z"
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    annotations:
+      k8s.v1.cni.cncf.io/networks-status: ""
+      openshift.io/deployment-config.name: sonarqube
+      openshift.io/deployment.name: sonarqube-2
+      openshift.io/scc: restricted
+    creationTimestamp: "2019-11-05T18:34:45Z"
+    labels:
+      openshift.io/deployer-pod-for.name: sonarqube-2
+    name: sonarqube-2-deploy
+    namespace: elc-sonarqube
+    ownerReferences:
+    - apiVersion: v1
+      kind: ReplicationController
+      name: sonarqube-2
+      uid: f0ba8567-fffa-11e9-a69d-020a49d26ab8
+    resourceVersion: "498349"
+    selfLink: /api/v1/namespaces/elc-sonarqube/pods/sonarqube-2-deploy
+    uid: f0be7f6c-fffa-11e9-a69d-020a49d26ab8
+  spec:
+    activeDeadlineSeconds: 21600
+    containers:
+    - env:
+      - name: OPENSHIFT_DEPLOYMENT_NAME
+        value: sonarqube-2
+      - name: OPENSHIFT_DEPLOYMENT_NAMESPACE
+        value: elc-sonarqube
+      image: quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:2b363dce39d2e0f8b4a472ee09eb0058b9331d1ab04cd626c7d3fd4e670fe9dd
+      imagePullPolicy: IfNotPresent
+      name: deployment
+      resources: {}
+      securityContext:
+        capabilities:
+          drop:
+          - KILL
+          - MKNOD
+          - SETGID
+          - SETUID
+        runAsUser: 1001900000
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: deployer-token-hcttf
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    imagePullSecrets:
+    - name: deployer-dockercfg-p8d4n
+    nodeName: ip-10-0-133-78.us-east-2.compute.internal
+    priority: 0
+    restartPolicy: Never
+    schedulerName: default-scheduler
+    securityContext:
+      fsGroup: 1001900000
+      seLinuxOptions:
+        level: s0:c44,c4
+    serviceAccount: deployer
+    serviceAccountName: deployer
+    shareProcessNamespace: false
+    terminationGracePeriodSeconds: 10
+    tolerations:
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 300
+    volumes:
+    - name: deployer-token-hcttf
+      secret:
+        defaultMode: 420
+        secretName: deployer-token-hcttf
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2019-11-05T18:34:45Z"
+      reason: PodCompleted
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2019-11-05T18:35:49Z"
+      reason: PodCompleted
+      status: "False"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2019-11-05T18:35:49Z"
+      reason: PodCompleted
+      status: "False"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2019-11-05T18:34:45Z"
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: cri-o://badcea6daa3d4b254768281b0b57fe9fb41f9c7ed6d97d07cd65f657a4ce0796
+      image: quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:2b363dce39d2e0f8b4a472ee09eb0058b9331d1ab04cd626c7d3fd4e670fe9dd
+      imageID: quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:2b363dce39d2e0f8b4a472ee09eb0058b9331d1ab04cd626c7d3fd4e670fe9dd
+      lastState: {}
+      name: deployment
+      ready: false
+      restartCount: 0
+      state:
+        terminated:
+          containerID: cri-o://badcea6daa3d4b254768281b0b57fe9fb41f9c7ed6d97d07cd65f657a4ce0796
+          exitCode: 0
+          finishedAt: "2019-11-05T18:35:48Z"
+          reason: Completed
+          startedAt: "2019-11-05T18:34:55Z"
+    hostIP: 10.0.133.78
+    phase: Succeeded
+    podIP: 10.131.1.73
+    qosClass: BestEffort
+    startTime: "2019-11-05T18:34:45Z"
+- apiVersion: v1
+  kind: ReplicationController
+  metadata:
+    annotations:
+      openshift.io/deployer-pod.completed-at: 2019-11-05 18:27:12 +0000 UTC
+      openshift.io/deployer-pod.created-at: 2019-11-05 18:26:38 +0000 UTC
+      openshift.io/deployer-pod.name: postgresql-1-deploy
+      openshift.io/deployment-config.latest-version: "1"
+      openshift.io/deployment-config.name: postgresql
+      openshift.io/deployment.phase: Complete
+      openshift.io/deployment.replicas: "1"
+      openshift.io/deployment.status-reason: config change
+      openshift.io/encoded-deployment-config: |
+        {"kind":"DeploymentConfig","apiVersion":"apps.openshift.io/v1","metadata":{"name":"postgresql","namespace":"elc-sonarqube","selfLink":"/apis/apps.openshift.io/v1/namespaces/elc-sonarqube/deploymentconfigs/postgresql","uid":"cd9efa51-fff9-11e9-b47e-0a580a820026","resourceVersion":"494011","generation":2,"creationTimestamp":"2019-11-05T18:26:37Z","labels":{"app":"sonarqube_db","template":"postgresql-persistent-template"},"annotations":{"openshift.io/generated-by":"OpenShiftNewApp","template.alpha.openshift.io/wait-for-ready":"true"}},"spec":{"strategy":{"type":"Recreate","recreateParams":{"timeoutSeconds":600},"resources":{},"activeDeadlineSeconds":21600},"triggers":[{"type":"ImageChange","imageChangeParams":{"automatic":true,"containerNames":["postgresql"],"from":{"kind":"ImageStreamTag","namespace":"openshift","name":"postgresql:10"},"lastTriggeredImage":"image-registry.openshift-image-registry.svc:5000/openshift/postgresql@sha256:a32b6e4cde1c76b97981373b408ee2e51b6be7f037db71b558bcf5469fb5bdd0"}},{"type":"ConfigChange"}],"replicas":1,"revisionHistoryLimit":10,"test":false,"selector":{"name":"postgresql"},"template":{"metadata":{"creationTimestamp":null,"labels":{"app":"sonarqube_db","name":"postgresql"},"annotations":{"openshift.io/generated-by":"OpenShiftNewApp"}},"spec":{"volumes":[{"name":"postgresql-data","persistentVolumeClaim":{"claimName":"postgresql"}}],"containers":[{"name":"postgresql","image":"image-registry.openshift-image-registry.svc:5000/openshift/postgresql@sha256:a32b6e4cde1c76b97981373b408ee2e51b6be7f037db71b558bcf5469fb5bdd0","ports":[{"containerPort":5432,"protocol":"TCP"}],"env":[{"name":"POSTGRESQL_USER","valueFrom":{"secretKeyRef":{"name":"postgresql","key":"database-user"}}},{"name":"POSTGRESQL_PASSWORD","valueFrom":{"secretKeyRef":{"name":"postgresql","key":"database-password"}}},{"name":"POSTGRESQL_DATABASE","valueFrom":{"secretKeyRef":{"name":"postgresql","key":"database-name"}}}],"resources":{"limits":{"memory":"512Mi"}},"volumeMounts":[{"name":"postgresql-data","mountPath":"/var/lib/pgsql/data"}],"livenessProbe":{"exec":{"command":["/usr/libexec/check-container","--live"]},"initialDelaySeconds":120,"timeoutSeconds":10,"periodSeconds":10,"successThreshold":1,"failureThreshold":3},"readinessProbe":{"exec":{"command":["/usr/libexec/check-container"]},"initialDelaySeconds":5,"timeoutSeconds":1,"periodSeconds":10,"successThreshold":1,"failureThreshold":3},"terminationMessagePath":"/dev/termination-log","terminationMessagePolicy":"File","imagePullPolicy":"IfNotPresent","securityContext":{"capabilities":{},"privileged":false,"procMount":"Default"}}],"restartPolicy":"Always","terminationGracePeriodSeconds":30,"dnsPolicy":"ClusterFirst","securityContext":{},"schedulerName":"default-scheduler"}}},"status":{"latestVersion":1,"observedGeneration":0,"replicas":0,"updatedReplicas":0,"availableReplicas":0,"unavailableReplicas":0,"details":{"message":"config change","causes":[{"type":"ConfigChange"}]}}}
+    creationTimestamp: "2019-11-05T18:26:37Z"
+    generation: 2
+    labels:
+      app: sonarqube_db
+      openshift.io/deployment-config.name: postgresql
+      template: postgresql-persistent-template
+    name: postgresql-1
+    namespace: elc-sonarqube
+    ownerReferences:
+    - apiVersion: apps.openshift.io/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: DeploymentConfig
+      name: postgresql
+      uid: cd9efa51-fff9-11e9-b47e-0a580a820026
+    resourceVersion: "494307"
+    selfLink: /api/v1/namespaces/elc-sonarqube/replicationcontrollers/postgresql-1
+    uid: ce016209-fff9-11e9-a69d-020a49d26ab8
+  spec:
+    replicas: 1
+    selector:
+      deployment: postgresql-1
+      deploymentconfig: postgresql
+      name: postgresql
+    template:
+      metadata:
+        annotations:
+          openshift.io/deployment-config.latest-version: "1"
+          openshift.io/deployment-config.name: postgresql
+          openshift.io/deployment.name: postgresql-1
+          openshift.io/generated-by: OpenShiftNewApp
+        creationTimestamp: null
+        labels:
+          app: sonarqube_db
+          deployment: postgresql-1
+          deploymentconfig: postgresql
+          name: postgresql
+      spec:
+        containers:
+        - env:
+          - name: POSTGRESQL_USER
+            valueFrom:
+              secretKeyRef:
+                key: database-user
+                name: postgresql
+          - name: POSTGRESQL_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                key: database-password
+                name: postgresql
+          - name: POSTGRESQL_DATABASE
+            valueFrom:
+              secretKeyRef:
+                key: database-name
+                name: postgresql
+          image: image-registry.openshift-image-registry.svc:5000/openshift/postgresql@sha256:a32b6e4cde1c76b97981373b408ee2e51b6be7f037db71b558bcf5469fb5bdd0
+          imagePullPolicy: IfNotPresent
+          livenessProbe:
+            exec:
+              command:
+              - /usr/libexec/check-container
+              - --live
+            failureThreshold: 3
+            initialDelaySeconds: 120
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 10
+          name: postgresql
+          ports:
+          - containerPort: 5432
+            protocol: TCP
+          readinessProbe:
+            exec:
+              command:
+              - /usr/libexec/check-container
+            failureThreshold: 3
+            initialDelaySeconds: 5
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 1
+          resources:
+            limits:
+              memory: 512Mi
+          securityContext:
+            capabilities: {}
+            privileged: false
+            procMount: Default
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          volumeMounts:
+          - mountPath: /var/lib/pgsql/data
+            name: postgresql-data
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+        volumes:
+        - name: postgresql-data
+          persistentVolumeClaim:
+            claimName: postgresql
+  status:
+    availableReplicas: 1
+    fullyLabeledReplicas: 1
+    observedGeneration: 2
+    readyReplicas: 1
+    replicas: 1
+- apiVersion: v1
+  kind: ReplicationController
+  metadata:
+    annotations:
+      openshift.io/deployer-pod.completed-at: 2019-11-05 18:28:47 +0000 UTC
+      openshift.io/deployer-pod.created-at: 2019-11-05 18:28:30 +0000 UTC
+      openshift.io/deployer-pod.name: sonarqube-1-deploy
+      openshift.io/deployment-config.latest-version: "1"
+      openshift.io/deployment-config.name: sonarqube
+      openshift.io/deployment.phase: Complete
+      openshift.io/deployment.replicas: "1"
+      openshift.io/deployment.status-reason: config change
+      openshift.io/encoded-deployment-config: |
+        {"kind":"DeploymentConfig","apiVersion":"apps.openshift.io/v1","metadata":{"name":"sonarqube","namespace":"elc-sonarqube","selfLink":"/apis/apps.openshift.io/v1/namespaces/elc-sonarqube/deploymentconfigs/sonarqube","uid":"1048a895-fffa-11e9-b47e-0a580a820026","resourceVersion":"494819","generation":2,"creationTimestamp":"2019-11-05T18:28:29Z","labels":{"app":"sonarqube"},"annotations":{"openshift.io/generated-by":"OpenShiftNewApp"}},"spec":{"strategy":{"type":"Rolling","rollingParams":{"updatePeriodSeconds":1,"intervalSeconds":1,"timeoutSeconds":600,"maxUnavailable":"25%","maxSurge":"25%"},"resources":{},"activeDeadlineSeconds":21600},"triggers":[{"type":"ConfigChange"},{"type":"ImageChange","imageChangeParams":{"automatic":true,"containerNames":["sonarqube"],"from":{"kind":"ImageStreamTag","namespace":"elc-sonarqube","name":"sonarqube:6.7.6"},"lastTriggeredImage":"wkulhanek/sonarqube@sha256:b560ad6d9270ea9b67cdd4f00523614436405341f9118e107ea098d03776dbb4"}}],"replicas":1,"revisionHistoryLimit":10,"test":false,"selector":{"app":"sonarqube","deploymentconfig":"sonarqube"},"template":{"metadata":{"creationTimestamp":null,"labels":{"app":"sonarqube","deploymentconfig":"sonarqube"},"annotations":{"openshift.io/generated-by":"OpenShiftNewApp"}},"spec":{"volumes":[{"name":"sonarqube-volume-1","emptyDir":{}}],"containers":[{"name":"sonarqube","image":"wkulhanek/sonarqube@sha256:b560ad6d9270ea9b67cdd4f00523614436405341f9118e107ea098d03776dbb4","ports":[{"containerPort":9000,"protocol":"TCP"}],"env":[{"name":"SONARQUBE_JDBC_PASSWORD","value":"sonar"},{"name":"SONARQUBE_JDBC_URL","value":"jdbc:postgresql://postgresql/sonar"},{"name":"SONARQUBE_JDBC_USERNAME","value":"sonar"}],"resources":{},"volumeMounts":[{"name":"sonarqube-volume-1","mountPath":"/opt/sonarqube/data"}],"terminationMessagePath":"/dev/termination-log","terminationMessagePolicy":"File","imagePullPolicy":"IfNotPresent"}],"restartPolicy":"Always","terminationGracePeriodSeconds":30,"dnsPolicy":"ClusterFirst","securityContext":{},"schedulerName":"default-scheduler"}}},"status":{"latestVersion":1,"observedGeneration":1,"replicas":0,"updatedReplicas":0,"availableReplicas":0,"unavailableReplicas":0,"details":{"message":"config change","causes":[{"type":"ConfigChange"}]},"conditions":[{"type":"Available","status":"False","lastUpdateTime":"2019-11-05T18:28:29Z","lastTransitionTime":"2019-11-05T18:28:29Z","message":"Deployment config does not have minimum availability."}]}}
+    creationTimestamp: "2019-11-05T18:28:30Z"
+    generation: 3
+    labels:
+      app: sonarqube
+      openshift.io/deployment-config.name: sonarqube
+    name: sonarqube-1
+    namespace: elc-sonarqube
+    ownerReferences:
+    - apiVersion: apps.openshift.io/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: DeploymentConfig
+      name: sonarqube
+      uid: 1048a895-fffa-11e9-b47e-0a580a820026
+    resourceVersion: "497873"
+    selfLink: /api/v1/namespaces/elc-sonarqube/replicationcontrollers/sonarqube-1
+    uid: 10ec02fa-fffa-11e9-a69d-020a49d26ab8
+  spec:
+    replicas: 0
+    selector:
+      app: sonarqube
+      deployment: sonarqube-1
+      deploymentconfig: sonarqube
+    template:
+      metadata:
+        annotations:
+          openshift.io/deployment-config.latest-version: "1"
+          openshift.io/deployment-config.name: sonarqube
+          openshift.io/deployment.name: sonarqube-1
+          openshift.io/generated-by: OpenShiftNewApp
+        creationTimestamp: null
+        labels:
+          app: sonarqube
+          deployment: sonarqube-1
+          deploymentconfig: sonarqube
+      spec:
+        containers:
+        - env:
+          - name: SONARQUBE_JDBC_PASSWORD
+            value: sonar
+          - name: SONARQUBE_JDBC_URL
+            value: jdbc:postgresql://postgresql/sonar
+          - name: SONARQUBE_JDBC_USERNAME
+            value: sonar
+          image: wkulhanek/sonarqube@sha256:b560ad6d9270ea9b67cdd4f00523614436405341f9118e107ea098d03776dbb4
+          imagePullPolicy: IfNotPresent
+          name: sonarqube
+          ports:
+          - containerPort: 9000
+            protocol: TCP
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          volumeMounts:
+          - mountPath: /opt/sonarqube/data
+            name: sonarqube-volume-1
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+        volumes:
+        - emptyDir: {}
+          name: sonarqube-volume-1
+  status:
+    observedGeneration: 3
+    replicas: 0
+- apiVersion: v1
+  kind: ReplicationController
+  metadata:
+    annotations:
+      openshift.io/deployer-pod.completed-at: 2019-11-05 18:35:48 +0000 UTC
+      openshift.io/deployer-pod.created-at: 2019-11-05 18:34:45 +0000 UTC
+      openshift.io/deployer-pod.name: sonarqube-2-deploy
+      openshift.io/deployment-config.latest-version: "2"
+      openshift.io/deployment-config.name: sonarqube
+      openshift.io/deployment.phase: Complete
+      openshift.io/deployment.replicas: "1"
+      openshift.io/deployment.status-reason: config change
+      openshift.io/encoded-deployment-config: |
+        {"kind":"DeploymentConfig","apiVersion":"apps.openshift.io/v1","metadata":{"name":"sonarqube","namespace":"elc-sonarqube","selfLink":"/apis/apps.openshift.io/v1/namespaces/elc-sonarqube/deploymentconfigs/sonarqube","uid":"1048a895-fffa-11e9-b47e-0a580a820026","resourceVersion":"497749","generation":10,"creationTimestamp":"2019-11-05T18:28:29Z","labels":{"app":"sonarqube"},"annotations":{"openshift.io/generated-by":"OpenShiftNewApp"}},"spec":{"strategy":{"type":"Recreate","recreateParams":{"timeoutSeconds":600},"rollingParams":{"updatePeriodSeconds":1,"intervalSeconds":1,"timeoutSeconds":600,"maxUnavailable":"25%","maxSurge":"25%"},"resources":{},"activeDeadlineSeconds":21600},"triggers":[{"type":"ConfigChange"},{"type":"ImageChange","imageChangeParams":{"automatic":true,"containerNames":["sonarqube"],"from":{"kind":"ImageStreamTag","namespace":"elc-sonarqube","name":"sonarqube:6.7.6"},"lastTriggeredImage":"wkulhanek/sonarqube@sha256:b560ad6d9270ea9b67cdd4f00523614436405341f9118e107ea098d03776dbb4"}}],"replicas":1,"revisionHistoryLimit":10,"test":false,"selector":{"app":"sonarqube","deploymentconfig":"sonarqube"},"template":{"metadata":{"creationTimestamp":null,"labels":{"app":"sonarqube","deploymentconfig":"sonarqube"},"annotations":{"openshift.io/generated-by":"OpenShiftNewApp"}},"spec":{"volumes":[{"name":"sonarqube-volume-1","persistentVolumeClaim":{"claimName":"sonarqube-pvc"}}],"containers":[{"name":"sonarqube","image":"wkulhanek/sonarqube@sha256:b560ad6d9270ea9b67cdd4f00523614436405341f9118e107ea098d03776dbb4","ports":[{"containerPort":9000,"protocol":"TCP"}],"env":[{"name":"SONARQUBE_JDBC_PASSWORD","value":"sonar"},{"name":"SONARQUBE_JDBC_URL","value":"jdbc:postgresql://postgresql/sonar"},{"name":"SONARQUBE_JDBC_USERNAME","value":"sonar"}],"resources":{"limits":{"cpu":"2","memory":"3Gi"},"requests":{"cpu":"1","memory":"2Gi"}},"volumeMounts":[{"name":"sonarqube-volume-1","mountPath":"/opt/sonarqube/data"}],"livenessProbe":{"exec":{"command":["echo","ok"]},"initialDelaySeconds":40,"timeoutSeconds":1,"periodSeconds":10,"successThreshold":1,"failureThreshold":3},"readinessProbe":{"httpGet":{"path":"/about","port":9000,"scheme":"HTTP"},"initialDelaySeconds":20,"timeoutSeconds":1,"periodSeconds":10,"successThreshold":1,"failureThreshold":3},"terminationMessagePath":"/dev/termination-log","terminationMessagePolicy":"File","imagePullPolicy":"IfNotPresent"}],"restartPolicy":"Always","terminationGracePeriodSeconds":30,"dnsPolicy":"ClusterFirst","securityContext":{},"schedulerName":"default-scheduler"}}},"status":{"latestVersion":2,"observedGeneration":9,"replicas":1,"updatedReplicas":1,"availableReplicas":1,"unavailableReplicas":0,"details":{"message":"config change","causes":[{"type":"ConfigChange"}]},"conditions":[{"type":"Available","status":"True","lastUpdateTime":"2019-11-05T18:28:47Z","lastTransitionTime":"2019-11-05T18:28:47Z","message":"Deployment config has minimum availability."},{"type":"Progressing","status":"True","lastUpdateTime":"2019-11-05T18:28:47Z","lastTransitionTime":"2019-11-05T18:28:47Z","reason":"NewReplicationControllerAvailable","message":"replication controller \"sonarqube-1\" successfully rolled out"}],"readyReplicas":1}}
+    creationTimestamp: "2019-11-05T18:34:45Z"
+    generation: 2
+    labels:
+      app: sonarqube
+      openshift.io/deployment-config.name: sonarqube
+    name: sonarqube-2
+    namespace: elc-sonarqube
+    ownerReferences:
+    - apiVersion: apps.openshift.io/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: DeploymentConfig
+      name: sonarqube
+      uid: 1048a895-fffa-11e9-b47e-0a580a820026
+    resourceVersion: "498347"
+    selfLink: /api/v1/namespaces/elc-sonarqube/replicationcontrollers/sonarqube-2
+    uid: f0ba8567-fffa-11e9-a69d-020a49d26ab8
+  spec:
+    replicas: 1
+    selector:
+      app: sonarqube
+      deployment: sonarqube-2
+      deploymentconfig: sonarqube
+    template:
+      metadata:
+        annotations:
+          openshift.io/deployment-config.latest-version: "2"
+          openshift.io/deployment-config.name: sonarqube
+          openshift.io/deployment.name: sonarqube-2
+          openshift.io/generated-by: OpenShiftNewApp
+        creationTimestamp: null
+        labels:
+          app: sonarqube
+          deployment: sonarqube-2
+          deploymentconfig: sonarqube
+      spec:
+        containers:
+        - env:
+          - name: SONARQUBE_JDBC_PASSWORD
+            value: sonar
+          - name: SONARQUBE_JDBC_URL
+            value: jdbc:postgresql://postgresql/sonar
+          - name: SONARQUBE_JDBC_USERNAME
+            value: sonar
+          image: wkulhanek/sonarqube@sha256:b560ad6d9270ea9b67cdd4f00523614436405341f9118e107ea098d03776dbb4
+          imagePullPolicy: IfNotPresent
+          livenessProbe:
+            exec:
+              command:
+              - echo
+              - ok
+            failureThreshold: 3
+            initialDelaySeconds: 40
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 1
+          name: sonarqube
+          ports:
+          - containerPort: 9000
+            protocol: TCP
+          readinessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /about
+              port: 9000
+              scheme: HTTP
+            initialDelaySeconds: 20
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 1
+          resources:
+            limits:
+              cpu: "2"
+              memory: 3Gi
+            requests:
+              cpu: "1"
+              memory: 2Gi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          volumeMounts:
+          - mountPath: /opt/sonarqube/data
+            name: sonarqube-volume-1
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+        volumes:
+        - name: sonarqube-volume-1
+          persistentVolumeClaim:
+            claimName: sonarqube-pvc
+  status:
+    availableReplicas: 1
+    fullyLabeledReplicas: 1
+    observedGeneration: 2
+    readyReplicas: 1
+    replicas: 1
+- apiVersion: v1
+  kind: Service
+  metadata:
+    annotations:
+      openshift.io/generated-by: OpenShiftNewApp
+      template.openshift.io/expose-uri: postgres://{.spec.clusterIP}:{.spec.ports[?(.name=="postgresql")].port}
+    creationTimestamp: "2019-11-05T18:26:37Z"
+    labels:
+      app: sonarqube_db
+      template: postgresql-persistent-template
+    name: postgresql
+    namespace: elc-sonarqube
+    resourceVersion: "494004"
+    selfLink: /api/v1/namespaces/elc-sonarqube/services/postgresql
+    uid: cd97455d-fff9-11e9-b1ba-0aa78a01ba20
+  spec:
+    clusterIP: 172.30.230.108
+    ports:
+    - name: postgresql
+      port: 5432
+      protocol: TCP
+      targetPort: 5432
+    selector:
+      name: postgresql
+    sessionAffinity: None
+    type: ClusterIP
+  status:
+    loadBalancer: {}
+- apiVersion: v1
+  kind: Service
+  metadata:
+    annotations:
+      openshift.io/generated-by: OpenShiftNewApp
+    creationTimestamp: "2019-11-05T18:28:29Z"
+    labels:
+      app: sonarqube
+    name: sonarqube
+    namespace: elc-sonarqube
+    resourceVersion: "494811"
+    selfLink: /api/v1/namespaces/elc-sonarqube/services/sonarqube
+    uid: 104d643f-fffa-11e9-94f9-06a504ac82cc
+  spec:
+    clusterIP: 172.30.187.149
+    ports:
+    - name: 9000-tcp
+      port: 9000
+      protocol: TCP
+      targetPort: 9000
+    selector:
+      app: sonarqube
+      deploymentconfig: sonarqube
+    sessionAffinity: None
+    type: ClusterIP
+  status:
+    loadBalancer: {}
+- apiVersion: apps.openshift.io/v1
+  kind: DeploymentConfig
+  metadata:
+    annotations:
+      openshift.io/generated-by: OpenShiftNewApp
+      template.alpha.openshift.io/wait-for-ready: "true"
+    creationTimestamp: "2019-11-05T18:26:37Z"
+    generation: 2
+    labels:
+      app: sonarqube_db
+      template: postgresql-persistent-template
+    name: postgresql
+    namespace: elc-sonarqube
+    resourceVersion: "494309"
+    selfLink: /apis/apps.openshift.io/v1/namespaces/elc-sonarqube/deploymentconfigs/postgresql
+    uid: cd9efa51-fff9-11e9-b47e-0a580a820026
+  spec:
+    replicas: 1
+    revisionHistoryLimit: 10
+    selector:
+      name: postgresql
+    strategy:
+      activeDeadlineSeconds: 21600
+      recreateParams:
+        timeoutSeconds: 600
+      resources: {}
+      type: Recreate
+    template:
+      metadata:
+        annotations:
+          openshift.io/generated-by: OpenShiftNewApp
+        creationTimestamp: null
+        labels:
+          app: sonarqube_db
+          name: postgresql
+      spec:
+        containers:
+        - env:
+          - name: POSTGRESQL_USER
+            valueFrom:
+              secretKeyRef:
+                key: database-user
+                name: postgresql
+          - name: POSTGRESQL_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                key: database-password
+                name: postgresql
+          - name: POSTGRESQL_DATABASE
+            valueFrom:
+              secretKeyRef:
+                key: database-name
+                name: postgresql
+          image: image-registry.openshift-image-registry.svc:5000/openshift/postgresql@sha256:a32b6e4cde1c76b97981373b408ee2e51b6be7f037db71b558bcf5469fb5bdd0
+          imagePullPolicy: IfNotPresent
+          livenessProbe:
+            exec:
+              command:
+              - /usr/libexec/check-container
+              - --live
+            failureThreshold: 3
+            initialDelaySeconds: 120
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 10
+          name: postgresql
+          ports:
+          - containerPort: 5432
+            protocol: TCP
+          readinessProbe:
+            exec:
+              command:
+              - /usr/libexec/check-container
+            failureThreshold: 3
+            initialDelaySeconds: 5
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 1
+          resources:
+            limits:
+              memory: 512Mi
+          securityContext:
+            capabilities: {}
+            privileged: false
+            procMount: Default
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          volumeMounts:
+          - mountPath: /var/lib/pgsql/data
+            name: postgresql-data
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+        volumes:
+        - name: postgresql-data
+          persistentVolumeClaim:
+            claimName: postgresql
+    test: false
+    triggers:
+    - imageChangeParams:
+        automatic: true
+        containerNames:
+        - postgresql
+        from:
+          kind: ImageStreamTag
+          name: postgresql:10
+          namespace: openshift
+        lastTriggeredImage: image-registry.openshift-image-registry.svc:5000/openshift/postgresql@sha256:a32b6e4cde1c76b97981373b408ee2e51b6be7f037db71b558bcf5469fb5bdd0
+      type: ImageChange
+    - type: ConfigChange
+  status:
+    availableReplicas: 1
+    conditions:
+    - lastTransitionTime: "2019-11-05T18:27:12Z"
+      lastUpdateTime: "2019-11-05T18:27:12Z"
+      message: Deployment config has minimum availability.
+      status: "True"
+      type: Available
+    - lastTransitionTime: "2019-11-05T18:27:13Z"
+      lastUpdateTime: "2019-11-05T18:27:13Z"
+      message: replication controller "postgresql-1" successfully rolled out
+      reason: NewReplicationControllerAvailable
+      status: "True"
+      type: Progressing
+    details:
+      causes:
+      - type: ConfigChange
+      message: config change
+    latestVersion: 1
+    observedGeneration: 2
+    readyReplicas: 1
+    replicas: 1
+    unavailableReplicas: 0
+    updatedReplicas: 1
+- apiVersion: apps.openshift.io/v1
+  kind: DeploymentConfig
+  metadata:
+    annotations:
+      openshift.io/generated-by: OpenShiftNewApp
+    creationTimestamp: "2019-11-05T18:28:29Z"
+    generation: 10
+    labels:
+      app: sonarqube
+    name: sonarqube
+    namespace: elc-sonarqube
+    resourceVersion: "498348"
+    selfLink: /apis/apps.openshift.io/v1/namespaces/elc-sonarqube/deploymentconfigs/sonarqube
+    uid: 1048a895-fffa-11e9-b47e-0a580a820026
+  spec:
+    replicas: 1
+    revisionHistoryLimit: 10
+    selector:
+      app: sonarqube
+      deploymentconfig: sonarqube
+    strategy:
+      activeDeadlineSeconds: 21600
+      recreateParams:
+        timeoutSeconds: 600
+      resources: {}
+      rollingParams:
+        intervalSeconds: 1
+        maxSurge: 25%
+        maxUnavailable: 25%
+        timeoutSeconds: 600
+        updatePeriodSeconds: 1
+      type: Recreate
+    template:
+      metadata:
+        annotations:
+          openshift.io/generated-by: OpenShiftNewApp
+        creationTimestamp: null
+        labels:
+          app: sonarqube
+          deploymentconfig: sonarqube
+      spec:
+        containers:
+        - env:
+          - name: SONARQUBE_JDBC_PASSWORD
+            value: sonar
+          - name: SONARQUBE_JDBC_URL
+            value: jdbc:postgresql://postgresql/sonar
+          - name: SONARQUBE_JDBC_USERNAME
+            value: sonar
+          image: wkulhanek/sonarqube@sha256:b560ad6d9270ea9b67cdd4f00523614436405341f9118e107ea098d03776dbb4
+          imagePullPolicy: IfNotPresent
+          livenessProbe:
+            exec:
+              command:
+              - echo
+              - ok
+            failureThreshold: 3
+            initialDelaySeconds: 40
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 1
+          name: sonarqube
+          ports:
+          - containerPort: 9000
+            protocol: TCP
+          readinessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /about
+              port: 9000
+              scheme: HTTP
+            initialDelaySeconds: 20
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 1
+          resources:
+            limits:
+              cpu: "2"
+              memory: 3Gi
+            requests:
+              cpu: "1"
+              memory: 2Gi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          volumeMounts:
+          - mountPath: /opt/sonarqube/data
+            name: sonarqube-volume-1
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+        volumes:
+        - name: sonarqube-volume-1
+          persistentVolumeClaim:
+            claimName: sonarqube-pvc
+    test: false
+    triggers:
+    - type: ConfigChange
+    - imageChangeParams:
+        automatic: true
+        containerNames:
+        - sonarqube
+        from:
+          kind: ImageStreamTag
+          name: sonarqube:6.7.6
+          namespace: elc-sonarqube
+        lastTriggeredImage: wkulhanek/sonarqube@sha256:b560ad6d9270ea9b67cdd4f00523614436405341f9118e107ea098d03776dbb4
+      type: ImageChange
+  status:
+    availableReplicas: 1
+    conditions:
+    - lastTransitionTime: "2019-11-05T18:35:48Z"
+      lastUpdateTime: "2019-11-05T18:35:48Z"
+      message: Deployment config has minimum availability.
+      status: "True"
+      type: Available
+    - lastTransitionTime: "2019-11-05T18:35:06Z"
+      lastUpdateTime: "2019-11-05T18:35:49Z"
+      message: replication controller "sonarqube-2" successfully rolled out
+      reason: NewReplicationControllerAvailable
+      status: "True"
+      type: Progressing
+    details:
+      causes:
+      - type: ConfigChange
+      message: config change
+    latestVersion: 2
+    observedGeneration: 10
+    readyReplicas: 1
+    replicas: 1
+    unavailableReplicas: 0
+    updatedReplicas: 1
+- apiVersion: image.openshift.io/v1
+  kind: ImageStream
+  metadata:
+    annotations:
+      openshift.io/generated-by: OpenShiftNewApp
+      openshift.io/image.dockerRepositoryCheck: "2019-11-05T18:28:29Z"
+    creationTimestamp: "2019-11-05T18:28:29Z"
+    generation: 2
+    labels:
+      app: sonarqube
+    name: sonarqube
+    namespace: elc-sonarqube
+    resourceVersion: "494816"
+    selfLink: /apis/image.openshift.io/v1/namespaces/elc-sonarqube/imagestreams/sonarqube
+    uid: 1044bb57-fffa-11e9-878a-0a580a810029
+  spec:
+    lookupPolicy:
+      local: false
+    tags:
+    - annotations:
+        openshift.io/imported-from: wkulhanek/sonarqube:6.7.6
+      from:
+        kind: DockerImage
+        name: wkulhanek/sonarqube:6.7.6
+      generation: 2
+      importPolicy: {}
+      name: 6.7.6
+      referencePolicy:
+        type: Source
+  status:
+    dockerImageRepository: image-registry.openshift-image-registry.svc:5000/elc-sonarqube/sonarqube
+    publicDockerImageRepository: default-route-openshift-image-registry.apps.cluster-99b8.sandbox904.opentlc.com/elc-sonarqube/sonarqube
+    tags:
+    - items:
+      - created: "2019-11-05T18:28:29Z"
+        dockerImageReference: wkulhanek/sonarqube@sha256:b560ad6d9270ea9b67cdd4f00523614436405341f9118e107ea098d03776dbb4
+        generation: 2
+        image: sha256:b560ad6d9270ea9b67cdd4f00523614436405341f9118e107ea098d03776dbb4
+      tag: 6.7.6
+- apiVersion: route.openshift.io/v1
+  kind: Route
+  metadata:
+    annotations:
+      openshift.io/host.generated: "true"
+    creationTimestamp: "2019-11-05T18:28:39Z"
+    labels:
+      app: sonarqube
+    name: sonarqube
+    namespace: elc-sonarqube
+    resourceVersion: "494899"
+    selfLink: /apis/route.openshift.io/v1/namespaces/elc-sonarqube/routes/sonarqube
+    uid: 16a3bc48-fffa-11e9-a78a-0a580a80002f
+  spec:
+    host: sonarqube-elc-sonarqube.apps.cluster-99b8.sandbox904.opentlc.com
+    port:
+      targetPort: 9000-tcp
+    subdomain: ""
+    to:
+      kind: Service
+      name: sonarqube
+      weight: 100
+    wildcardPolicy: None
+  status:
+    ingress:
+    - conditions:
+      - lastTransitionTime: "2019-11-05T18:28:40Z"
+        status: "True"
+        type: Admitted
+      host: sonarqube-elc-sonarqube.apps.cluster-99b8.sandbox904.opentlc.com
+      routerCanonicalHostname: apps.cluster-99b8.sandbox904.opentlc.com
+      routerName: default
+      wildcardPolicy: None
+kind: List
+metadata:
+  resourceVersion: ""
+  selfLink: ""
